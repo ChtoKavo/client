@@ -1,0 +1,929 @@
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure paragraphs are left-aligned by default */
+p {
+  text-align: left;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+/* Фон без размытия */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../public/фон.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.8);
+}
+
+.background-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.2) 0%,
+    rgba(118, 75, 162, 0.2) 50%,
+    rgba(229, 62, 62, 0.15) 100%
+  );
+}
+
+/* Загрузка */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Основной контейнер */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 80px; /* Для мобильной навигации */
+}
+
+/* Упрощенная шапка */
+.main-header {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 70px;
+  margin: 0;
+  max-width: none;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: auto;
+  flex: 1;
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #FFA705;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFA705;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 167, 5, 0.08);
+  transform: translateY(-1px);
+}
+
+.toggle-icon {
+  font-size: 16px;
+}
+
+.toggle-text {
+  white-space: nowrap;
+}
+
+/* Бренд/логотип */
+.header-brand {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #2d3748;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  padding: 4px;
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-text {
+  display: none;
+}
+
+.logo-large {
+  width: 74px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Действия пользователя */
+.header-actions {
+  flex-shrink: 0;
+}
+
+/* Header search */
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 0;
+  flex: 1;
+  max-width: 400px;
+}
+
+.notification-btn {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.notification-btn:hover {
+  background: rgba(255, 167, 5, 0.08);
+  border-color: #FFA705;
+}
+
+.notification-icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.header-search-input {
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+.header-search-input:focus {
+  border-color: #FFA705;
+  box-shadow: 0 0 0 3px rgba(255, 167, 5, 0.12);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2d3748;
+  text-decoration: none;
+}
+
+.user-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.user-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.user-avatar.mobile-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #718096;
+  margin-top: 2px;
+}
+
+.admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #fed7d7;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e53e3e;
+  transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+  background: #fed7d7;
+  border-color: #feb2b2;
+  transform: translateY(-1px);
+}
+
+.admin-btn.active {
+  background: #e53e3e;
+  color: white;
+  border-color: #e53e3e;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+.admin-icon {
+  font-size: 16px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #718096;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.logout-btn:hover {
+  background: #fed7d7;
+  border-color: #feb2b2;
+  color: #e53e3e;
+  transform: translateY(-1px);
+}
+
+.logout-icon {
+  font-size: 16px;
+}
+
+/* Мобильная нижняя навигация */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #718096;
+  flex: 1;
+  max-width: 80px;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(255, 167, 5, 0.08);
+}
+
+.mobile-nav-item.active {
+  color: #FFA705;
+  background: rgba(255, 167, 5, 0.12);
+}
+
+.mobile-nav-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.7);
+}
+
+.mobile-nav-item.active .mobile-nav-icon img {
+  filter: brightness(0) sepia(1) saturate(5) hue-rotate(0deg);
+}
+
+.mobile-nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Оверлей для бокового меню */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 198;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Боковое меню как отдельное окно */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.2);
+  z-index: 199;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #FFA705 0%, #ffb733 100%);
+  color: white;
+}
+
+.sidebar-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sidebar-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  flex: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a5568;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 167, 5, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.sidebar-item:hover::before {
+  left: 100%;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 167, 5, 0.08);
+  color: #FFA705;
+  transform: translateX(8px);
+}
+
+.sidebar-item.active {
+  background: linear-gradient(135deg, #FFA705 0%, #ffb733 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 167, 5, 0.3);
+  transform: translateX(8px);
+}
+
+.sidebar-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.8);
+}
+
+.sidebar-item.active .sidebar-icon-image {
+  filter: brightness(0) invert(1);
+}
+
+.sidebar-label {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Основной контент */
+.main-content {
+  flex: 1;
+  max-width: none;
+  margin: 0;
+  width: 100%;
+  padding: 20px;
+  animation: contentAppear 0.6s ease-out;
+}
+
+.main-content.mobile {
+  padding: 15px 15px 85px 15px; /* Увеличиваем нижний отступ для мобильной навигации */
+}
+
+/* Контейнер для контента внутри main-content */
+.content-container {
+  max-width: none;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Стили для полноразмерных карточек и компонентов */
+.full-width-section {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+.full-width-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.expanded-layout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes contentAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 16px;
+  }
+  
+  .main-content {
+    padding: 18px 16px;
+  }
+  
+  .header-search {
+    max-width: 300px;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .app-container {
+    padding-bottom: 70px;
+  }
+
+  .header-container {
+    padding: 0 12px;
+    height: 60px;
+  }
+  
+  .header-left {
+    gap: 10px;
+  }
+  
+  .sidebar-toggle {
+    padding: 6px 10px;
+  }
+  
+  .toggle-text {
+    display: none;
+  }
+  
+  .header-brand {
+    display: none;
+  }
+  
+  .header-search {
+    max-width: none;
+    margin-left: 0;
+  }
+  
+  .user-info {
+    display: none;
+  }
+  
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .admin-btn,
+  .logout-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .admin-btn span:not(.admin-icon),
+  .logout-btn span:not(.logout-icon) {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 15px 12px 75px 12px;
+  }
+  
+  .sidebar {
+    width: 280px;
+    left: -280px;
+  }
+  
+  .sidebar-header {
+    padding: 20px;
+  }
+  
+  .sidebar-nav {
+    padding: 20px;
+  }
+  
+  .sidebar-item {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  
+  .full-width-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .wide-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Адаптивность для маленьких мобильных устройств */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 10px;
+  }
+  
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+  
+  .sidebar-toggle .toggle-text {
+    display: none;
+  }
+  
+  .sidebar-nav {
+    padding: 16px;
+  }
+  
+  .sidebar-item {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  
+  .sidebar-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .user-menu {
+    gap: 4px;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .admin-btn,
+  .logout-btn {
+    padding: 5px 6px;
+  }
+  
+  .main-content {
+    padding: 12px 10px 72px 10px;
+  }
+  
+  .full-width-card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .mobile-bottom-nav {
+    height: 65px;
+    padding: 6px 0;
+  }
+  
+  .mobile-nav-item {
+    padding: 6px 8px;
+    max-width: 70px;
+  }
+  
+  .mobile-nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .mobile-nav-label {
+    font-size: 10px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .header-container {
+    padding: 0 8px;
+  }
+  
+  .main-content {
+    padding: 10px 8px 70px 8px;
+  }
+  
+  .mobile-nav-label {
+    font-size: 9px;
+  }
+  
+  .mobile-nav-item {
+    padding: 4px 6px;
+  }
+}
+
+/* Стили для форм входа/регистрации */
+.login-container,
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Улучшенная поддержка касаний для мобильных устройств */
+@media (hover: none) and (pointer: coarse) {
+  .sidebar-item:hover,
+  .mobile-nav-item:hover,
+  .sidebar-toggle:hover,
+  .notification-btn:hover,
+  .user-item:hover,
+  .admin-btn:hover,
+  .logout-btn:hover {
+    transform: none;
+    background: transparent;
+  }
+  
+  .sidebar-item:active,
+  .mobile-nav-item:active,
+  .sidebar-toggle:active,
+  .notification-btn:active,
+  .user-item:active,
+  .admin-btn:active,
+  .logout-btn:active {
+    transform: scale(0.95);
+    background: rgba(255, 167, 5, 0.1);
+  }
+  
+  .mobile-nav-item.active:active {
+    background: rgba(255, 167, 5, 0.2);
+  }
+}
+
+/* Предотвращение масштабирования при двойном тапе на iOS */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px; /* Предотвращает масштабирование в iOS */
+  }
+}
