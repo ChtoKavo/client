@@ -9,7 +9,7 @@ const Login = ({ onLogin, onSwitchToRegister }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = 'http://localhost:5001';
+  const API_BASE_URL = 'http://151.241.228.247:5001';
 
   const handleChange = (e) => {
     setFormData({

@@ -12,7 +12,7 @@ const Friends = ({ currentUserId: propCurrentUserId, onViewProfile }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   // Базовый URL API
-  const API_BASE = 'http://localhost:5001';
+  const API_BASE = 'http://151.241.228.247:5001';
 
   // Получаем user_id из различных источников
   const getCurrentUserId = () => {

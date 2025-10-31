@@ -34,7 +34,7 @@ const Messenger = ({ currentUser }) => {
   const fileInputRef = useRef(null);
   const messagesContainerRef = useRef(null);
 
-  const API_BASE_URL = 'http://localhost:5001';
+  const API_BASE_URL = 'http://151.241.228.247:5001';
 
   // Загрузка данных чата
   useEffect(() => {

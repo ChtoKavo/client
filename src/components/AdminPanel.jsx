@@ -23,7 +23,7 @@ const AdminPanel = ({ currentUser, onBack }) => {
       
       switch (activeTab) {
         case 'users':
-          const usersResponse = await fetch('http://localhost:5001/admin/users');
+          const usersResponse = await fetch('http://151.241.228.247:5001/admin/users');
           if (!usersResponse.ok) {
             const errorData = await usersResponse.json().catch(() => ({ error: 'Unknown error' }));
             throw new Error(`Ошибка загрузки пользователей: ${usersResponse.status} - ${errorData.error}`);
@@ -34,9 +34,9 @@ const AdminPanel = ({ currentUser, onBack }) => {
           break;
           
         case 'posts':
-          const postsResponse = await fetch('http://localhost:5001/admin/posts-simple');
+          const postsResponse = await fetch('http://151.241.228.247:5001/admin/posts-simple');
           if (!postsResponse.ok) {
-            const fallbackResponse = await fetch('http://localhost:5001/admin/posts?limit=100');
+            const fallbackResponse = await fetch('http://151.241.228.247:5001/admin/posts?limit=100');
             if (!fallbackResponse.ok) {
               const errorData = await fallbackResponse.json().catch(() => ({ error: 'Unknown error' }));
               throw new Error(`Ошибка загрузки постов: ${fallbackResponse.status} - ${errorData.error}`);
@@ -52,7 +52,7 @@ const AdminPanel = ({ currentUser, onBack }) => {
           break;
           
         case 'statistics':
-          const statsResponse = await fetch('http://localhost:5001/admin/statistics');
+          const statsResponse = await fetch('http://151.241.228.247:5001/admin/statistics');
           if (!statsResponse.ok) {
             const errorData = await statsResponse.json().catch(() => ({ error: 'Unknown error' }));
             throw new Error(`Ошибка загрузки статистики: ${statsResponse.status} - ${errorData.error}`);
@@ -79,7 +79,7 @@ const AdminPanel = ({ currentUser, onBack }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5001/admin/users/${userId}?current_user_id=${currentUser.user_id}`, {
+      const response = await fetch(`http://151.241.228.247:5001/admin/users/${userId}?current_user_id=${currentUser.user_id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ const AdminPanel = ({ currentUser, onBack }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5001/admin/posts/${postId}`, {
+      const response = await fetch(`http://151.241.228.247:5001/admin/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const AdminPanel = ({ currentUser, onBack }) => {
 
   const handleToggleUserStatus = async (userId, currentStatus) => {
     try {
-      const response = await fetch(`http://localhost:5001/admin/users/${userId}/status`, {
+      const response = await fetch(`http://151.241.228.247:5001/admin/users/${userId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ const Feed = ({ currentUser, socket }) => {
   const [error, setError] = useState('');
   const [socketConnected, setSocketConnected] = useState(false);
 
-  const API_BASE_URL = 'http://localhost:5001';
+  const API_BASE_URL = 'http://151.241.228.247:5001';
 
   useEffect(() => {
     if (currentUser) {
@@ -22,7 +22,7 @@ const Feed = ({ currentUser, socket }) => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5001/api/posts?user_id=${currentUser.user_id}`);
+        const response = await fetch(`http://151.241.228.247:5001/api/posts?user_id=${currentUser.user_id}`);
         if (response.ok) {
           const data = await response.json();
           setPosts(data);

@@ -49,15 +49,15 @@ const Search = ({ currentUser }) => {
     setIsLoading(true);
     try {
       // Поиск пользователей
-      const usersResponse = await fetch(`http://localhost:5001/api/users/search/${encodeURIComponent(query)}`);
+      const usersResponse = await fetch(`http://151.241.228.247:5001/api/users/search/${encodeURIComponent(query)}`);
       const usersData = await usersResponse.json();
 
       // Поиск постов
-      const postsResponse = await fetch(`http://localhost:5001/api/posts/search?q=${encodeURIComponent(query)}&user_id=${currentUser.user_id}`);
+      const postsResponse = await fetch(`http://151.241.228.247:5001/api/posts/search?q=${encodeURIComponent(query)}&user_id=${currentUser.user_id}`);
       const postsData = await postsResponse.json();
 
       // Поиск чатов
-      const chatsResponse = await fetch(`http://localhost:5001/api/chats/search?q=${encodeURIComponent(query)}&user_id=${currentUser.user_id}`);
+      const chatsResponse = await fetch(`http://151.241.228.247:5001/api/chats/search?q=${encodeURIComponent(query)}&user_id=${currentUser.user_id}`);
       const chatsData = await chatsResponse.json();
 
       setResults({
@@ -175,7 +175,7 @@ const Search = ({ currentUser }) => {
                           >
                             <div className="user-avatar-small">
                               {user.avatar_url ? (
-                                <img src={`http://localhost:5001${user.avatar_url}`} alt={user.name} />
+                                <img src={`http://151.241.228.247:5001${user.avatar_url}`} alt={user.name} />
                               ) : (
                                 <div className="avatar-fallback">
                                   {user.name.charAt(0).toUpperCase()}
@@ -246,7 +246,7 @@ const Search = ({ currentUser }) => {
                   >
                     <div className="user-avatar-small">
                       {user.avatar_url ? (
-                        <img src={`http://localhost:5001${user.avatar_url}`} alt={user.name} />
+                        <img src={`http://151.241.228.247:5001${user.avatar_url}`} alt={user.name} />
                       ) : (
                         <div className="avatar-fallback">
                           {user.name.charAt(0).toUpperCase()}
@@ -276,7 +276,7 @@ const Search = ({ currentUser }) => {
                     <div className="post-author-info">
                       <div className="post-author-avatar">
                         {post.author_avatar ? (
-                          <img src={`http://localhost:5001${post.author_avatar}`} alt={post.author_name} />
+                          <img src={`http://151.241.228.247:5001${post.author_avatar}`} alt={post.author_name} />
                         ) : (
                           <div className="avatar-fallback">
                             {post.author_name.charAt(0).toUpperCase()}
@@ -290,7 +290,7 @@ const Search = ({ currentUser }) => {
                     </div>
                     {post.image_url && (
                       <div className="post-image-preview">
-                        <img src={`http://localhost:5001${post.image_url}`} alt="Post" />
+                        <img src={`http://151.241.228.247:5001${post.image_url}`} alt="Post" />
                       </div>
                     )}
                     <div className="post-stats">
