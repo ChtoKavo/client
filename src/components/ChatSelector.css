@@ -8,8 +8,6 @@
   flex-direction: column;
   border-radius: 50px;
   border: 2px solid #000;
-  overflow: hidden;
-  margin: 50px 0;
 }
 
 /* Заголовок и кнопка настроек */
@@ -19,6 +17,11 @@
   align-items: center;
   padding: 20px 16px 0;
   background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #000;
 }
 
 .header-section h2 {
@@ -53,12 +56,18 @@
 .status-section {
   padding: 10px 16px;
   background: white;
+  position: sticky;
+  top: 64px;
+  z-index: 99;
 }
 
 /* Поисковая секция с иконкой */
 .search-section {
   padding: 16px 16px 12px;
   background: white;
+  position: sticky;
+  top: 104px;
+  z-index: 98;
 }
 
 .search-container-rounded {
@@ -97,6 +106,9 @@
 .tabs-section {
   background: white;
   padding: 0 16px 8px;
+  position: sticky;
+  top: 176px;
+  z-index: 97;
 }
 
 .tabs-container-rounded {

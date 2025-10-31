@@ -201,10 +201,7 @@ newSocket.on('new_message', (message) => {
     return () => document.removeEventListener('click', handleClick);
   }, []);
 
-  // Автопрокрутка к новым сообщениям
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+
 
   const handleBackToChats = () => {
     navigate('/chats');
@@ -492,6 +489,7 @@ const sendFile = async (file) => {
     
     // Очищаем поле ввода сразу для лучшего UX
     setNewMessage('');
+
     
     if (messageInputRef.current) {
       messageInputRef.current.focus();
