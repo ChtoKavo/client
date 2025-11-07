@@ -9,7 +9,7 @@ const Feed = ({ currentUser, socket }) => {
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [error, setError] = useState('');
   const [socketConnected, setSocketConnected] = useState(false);
-
+//попа
   const API_BASE_URL = 'http://151.241.228.247:5001';
 
   useEffect(() => {
